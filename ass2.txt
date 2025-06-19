@@ -1,0 +1,133 @@
+Task 1
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the solve function below.
+def solve(s):
+    return ' '.join(word.capitalize() for word in s.split(' '))
+
+if __name__ == '__main__':
+
+Task 2
+def average(array):
+    distinct_heights = set(array)
+    avg = sum(distinct_heights) / len(distinct_heights)
+    return avg
+    
+
+if __name__ == '__main__':
+
+Task 3
+import textwrap
+
+def wrap(string, max_width):
+    return textwrap.fill(string, max_width)
+
+if __name__ == '__main__':
+
+Task 4
+def print_rangoli(size):
+    import string
+    alpha = string.ascii_lowercase
+
+    lines = []
+    for i in range(size):
+        left = alpha[size-1:i:-1]  
+        center = alpha[i:size]     
+        row = '-'.join(left + center)
+        lines.append(row.center(4*size - 3, '-'))
+
+    
+    print('\n'.join(lines[::-1] + lines[1:]))
+    
+
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
+
+Task 5
+def merge_the_tools(string, k):
+    for i in range(0, len(string), k):
+        part = string[i:i+k]
+        seen = ""
+        for char in part:
+            if char not in seen:
+                seen += char
+        print(seen)
+    
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+
+Task 6
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import Counter
+
+
+x = int(input())  
+shoe_sizes = list(map(int, input().split()))
+shoe_inventory = Counter(shoe_sizes)
+
+n = int(input())  
+earnings = 0
+
+for _ in range(n):
+    size, price = map(int, input().split())
+    if shoe_inventory[size] > 0:
+        earnings += price
+        shoe_inventory[size] -= 1
+
+print(earnings)
+
+Task 7
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+t = int(input())
+
+for _ in range(t):
+    try:
+        a, b = input().split()
+        print(int(a) // int(b))
+    except (ZeroDivisionError, ValueError) as e:
+        print("Error Code:", e)
+
+Task 8
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import re
+
+T = int(input())
+for _ in range(T):
+    s = input()
+    try:
+        re.compile(s)
+        print("True")
+    except re.error as e:
+        print("False")
+Task 9 
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+n = int(input())
+s = set(map(int, input().split()))
+N = int(input())
+
+for _ in range(N):
+    cmd = input().split()
+    if cmd[0] == "pop":
+        try:
+            s.pop()
+        except KeyError:
+            continue
+    elif cmd[0] == "remove":
+        try:
+            s.remove(int(cmd[1]))
+        except KeyError:
+            continue
+    elif cmd[0] == "discard":
+        s.discard(int(cmd[1]))
+
+print(sum(s))
